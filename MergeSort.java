@@ -12,7 +12,7 @@ public class MergeSort {
         }
         int midPosition = (startPosition + endPosition) / 2;
         sort(array, startPosition, midPosition);
-        sort(array, midtPosition+1, endPosition);
+        sort(array, midPosition+1, endPosition);
         int[] buff = new int[array.length];
         int i = startPosition, j = midPosition+1, pos = startPosition;
         while(i <= midPosition && j <= endPosition){
@@ -30,12 +30,12 @@ public class MergeSort {
             i++;
             pos++;
         }
-        while(i <= enddPosition){
+        while(i <= endPosition){
             buff[pos] = array[j];
             i++;
             pos++;
         }
-        for (int k = startPosition; k = endPosition; k++) {
+        for (int k = startPosition; k <= endPosition; k++) {
             array[k] = buff[k];
         }
         }

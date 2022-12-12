@@ -1,12 +1,13 @@
 package Algoritms;
+
 import java.util.Date;
 
 public class Program {
     public static void main(String[] args) {
-        for (int i = 10000; i <= 10000; i+= 10000) {
+        for (int i = 100000; i <= 100000; i+= 100000) {
             int[] array = new int[i];
-            for (int j = 0; index < array.length; j++) {
-                array[j] = (int) (Math.random() * 10000);
+            for (int j = 0; j < array.length; j++) {
+                array[j] = (int) (Math.random() * 100000);
             }
             int[] array2 = new int[array.length];
             for (int k = 0; k < array.length; k++) {
@@ -22,15 +23,15 @@ public class Program {
             Date endDate = new Date();
             long QuickSortDuration = endDate.getTime() - startDate.getTime();
 
-            Date startDate = new Date();
+            Date startDate1 = new Date();
             MergeSort.sort(array2);
-            Date endDate = new Date();
-            long MergeSortDuration = endDate.getTime() - startDate.getTime();
+            Date endDate1 = new Date();
+            long MergeSortDuration = endDate1.getTime() - startDate1.getTime();
 
-            Date startDate = new Date();
+            Date startDate2 = new Date();
             HeapSort.sort(array3);
-            Date endDate = new Date();
-            long HeapSortDuration = endDate.getTime() - startDate.getTime();
+            Date endDate2 = new Date();
+            long HeapSortDuration = endDate2.getTime() - startDate2.getTime();
 
             System.out.printf("i: %s, QuickSort duration: %s, MergeSort duration: %s, HeapSort duration: %s%n", i, QuickSortDuration, MergeSortDuration, HeapSortDuration);
 
