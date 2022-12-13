@@ -1,43 +1,47 @@
 package Algoritms;
 
 public class MergeSort {
-    
+
     public static void sort(int[] array) {
-        sort(array, 0, array.length - 1);
+        mergeSort(array, array.length);
     }
-    
-    public static void sort(int[] array, int startPosition, int endPosition){
-        if(startPosition == endPosition){
+    public static void merge(
+    int[] a, int[] l, int[] r, int left, int right) {
+ 
+    int i = 0, j = 0, k = 0;
+    while (i < left && j < right) {
+        if (l[i] <= r[j]) {
+            a[k++] = l[i++];
+        }
+        else {
+            a[k++] = r[j++];
+        }
+    }
+    while (i < left) {
+        a[k++] = l[i++];
+    }
+    while (j < right) {
+        a[k++] = r[j++];
+    }
+    }
+
+    public static void mergeSort(int[] a, int n) {
+        if (n < 2) {
             return;
         }
-        int midPosition = (startPosition + endPosition) / 2;
-        sort(array, startPosition, midPosition);
-        sort(array, midPosition+1, endPosition);
-        int[] buff = new int[array.length];
-        int i = startPosition, j = midPosition+1, pos = startPosition;
-        while(i <= midPosition && j <= endPosition){
-            if(array[i] < array[j]){
-                buff[pos] = array[i];
-                i++;
-                pos++;
-            }else{
-                buff[pos] = array[j];
-                i++;
-                pos++;
-            }
-        while(i <= midPosition){
-            buff[pos] = array[i];
-            i++;
-            pos++;
+        int mid = n / 2;
+        int[] l = new int[mid];
+        int[] r = new int[n - mid];
+    
+        for (int i = 0; i < mid; i++) {
+            l[i] = a[i];
         }
-        while(i <= endPosition){
-            buff[pos] = array[j];
-            i++;
-            pos++;
+        for (int i = mid; i < n; i++) {
+            r[i - mid] = a[i];
         }
-        for (int k = startPosition; k <= endPosition; k++) {
-            array[k] = buff[k];
-        }
-        }
+        mergeSort(l, mid);
+        mergeSort(r, n - mid);
+    
+        merge(a, l, r, mid, n - mid);
     }
 }
